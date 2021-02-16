@@ -17,7 +17,7 @@ class HomePage extends StatefulWidget {
   
 class HomePageState extends State<HomePage> {
 
-  var url
+  
 
   @override
   void initState(){
@@ -29,9 +29,9 @@ class HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    var scaffold = Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.cyan,
+        backgroundColor: Colors.black87,
         title: Text("Poke App"),
         ),
         body: Center(
@@ -40,10 +40,11 @@ class HomePageState extends State<HomePage> {
         drawer: Drawer(),
         floatingActionButton: FloatingActionButton(
             onPressed: () {},
-            backgroundColor: Colors.cyan,
+            backgroundColor: Colors.blueGrey,
             child: Icon(Icons.refresh)
             ),
     );
+    return scaffold;
     
 
     
