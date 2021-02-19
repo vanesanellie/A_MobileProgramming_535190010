@@ -46,20 +46,20 @@ class HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          
-         
-       
         backgroundColor: Colors.black87,
-        title: Text("Pokemon App ^v^"),
-         
-         actions: <Widget>[
+        title: Text("Pokemon App"),
+        actions: <Widget>[
           IconButton(
             icon: Icon(Icons.search),
             onPressed: () {
+              showSearch(context: context, delegate: DataSearch());
             },
+          ),
+          IconButton(
+            icon: Icon(Icons.person),
+            onPressed: () {},
           )
-         ],
-      
+        ],
       ),
       body: pokeUhuy == null
           ? Center(
@@ -76,24 +76,25 @@ class HomePageState extends State<HomePage> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => PokeDetail(
-                                      pokemon: poke,
-                                    )));
-                                      
+                                          pokemon: poke,
+                                        )));
                           },
                           child: Hero(
                             tag: poke.img,
                             child: Card(
                               elevation: 3.0,
                               child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
                                 children: <Widget>[
                                   Container(
                                     height: 100.0,
                                     width: 100.0,
-                                    
                                     decoration: BoxDecoration(
-                                      
-                                      
+                                        border: Border.all(
+                                          color: Colors.amber[300],
+                                          width: 9,
+                                        ),
                                         image: DecorationImage(
                                             image: NetworkImage(poke.img))),
                                   ),
@@ -107,21 +108,108 @@ class HomePageState extends State<HomePage> {
                       ))
                   .toList(),
             ),
-      drawer: Drawer(
-      
+      /* drawer: Drawer(
           child: Column(children: <Widget>[
         Container(
           width: double.infinity,
           padding: EdgeInsets.all(379),
           color: Colors.amber[300],
-           
+          decoration: BoxDecoration(
+            shape: BoxShape.rectangle,
+            image: DecorationImage(
+              image:
+                  NetworkImage('https://i.ibb.co/r4kC0fL/pokemonlogo-png.png'),
+            ),
+          ),
         )
-      ])
-      ),
+      ])),*/
       floatingActionButton: FloatingActionButton(
           onPressed: () {},
           backgroundColor: Colors.grey,
           child: Icon(Icons.refresh)),
+    );
+  }
+}
+
+class DataSearch extends SearchDelegate<String> {
+  final Pokemon = [
+    "Bulbasaur",
+    "Ivysaur",
+    "Venusaur",
+    "Charmander",
+  ];
+
+  final recentPokemon = [
+    "Bulbasaur",
+    "Ivysaur",
+  ];
+
+  @override
+  List<Widget> buildActions(BuildContext context) {
+    // actions for app bar
+    return [
+      IconButton(
+        icon: Icon(Icons.search),
+        onPressed: () {
+          query = "";
+        },
+      ),
+    ];
+  }
+
+  @override
+  Widget buildLeading(BuildContext context) {
+    // leading icon on the left of app bar
+    return IconButton(
+        icon: AnimatedIcon(
+            icon: AnimatedIcons.menu_arrow, progress: transitionAnimation),
+        onPressed: () {
+          close(context, null);
+        });
+  }
+
+  @override
+  Widget buildResults(BuildContext context) {
+    // show some result based on the selection
+    return Container(
+      color: Colors.amber,
+      height: 100.0,
+      width: 100.0,
+      child: Card(
+        color: Colors.amberAccent,
+        child: Center(
+          child: Text(query),
+        ),
+      ),
+    );
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    // show when someone searches for something
+    final suggestionList = query.isEmpty
+        ? recentPokemon
+        : Pokemon.where((p) => p.startsWith(query)).toList();
+
+    return ListView.builder(
+      itemBuilder: (context, index) => ListTile(
+        onTap: () {
+          showResults(context);
+        },
+        leading: Icon(Icons.android),
+        title: RichText(
+          text: TextSpan(
+              text: suggestionList[index].substring(0, query.length),
+              style: TextStyle(
+                  color: Colors.brown[900], fontWeight: FontWeight.bold)),
+          /*children : (
+          TextSpan(
+          text: suggestionList[index].substring(query.length),
+          style:TextStyle(color:Colors.grey)
+        )),*/
+        ),
+      ),
+      itemCount: suggestionList.length,
     );
   }
 }

@@ -1,11 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.flutter_application_1">
-    <uses-permission android:name="android.permission.INTERNET" />
+    package="com.example.bug">
    <application
-         android:name="io.flutter.app.FlutterApplication"
-            android:label="flutter_application_1"
-            android:usesCleartextTraffic="true"
-            android:icon="@mipmap/ic_launcher">
+        android:label="bug"
+        android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
@@ -40,8 +37,5 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
-
-            <meta-data android:name="io.flutter.network-policy"
-             android:resource="@xml/network_security_config"/>
     </application>
 </manifest>

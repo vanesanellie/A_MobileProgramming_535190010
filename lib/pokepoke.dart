@@ -120,6 +120,8 @@ class Pokemon {
                                   
                                   class PrevEvolution {
                                   PrevEvolution.fromJson(v);
+
+  String get name => null;
                       
                         toJson() {}
 }

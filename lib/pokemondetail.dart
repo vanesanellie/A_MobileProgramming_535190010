@@ -9,11 +9,11 @@ class PokeDetail extends StatelessWidget {
   bodyWidget(BuildContext context) => Stack(
         children: <Widget>[
           Positioned(
-            height: MediaQuery.of(context).size.height / 1.6,
-            width: MediaQuery.of(context).size.width - 20,
-            left: 10.0,
-            top: MediaQuery.of(context).size.height * 0.1,
-            child: Card(
+              height: MediaQuery.of(context).size.height / 1.6,
+              width: MediaQuery.of(context).size.width - 20,
+              left: 10.0,
+              top: MediaQuery.of(context).size.height * 0.1,
+              child: Card(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15.0),
                 ),
@@ -46,7 +46,10 @@ class PokeDetail extends StatelessWidget {
                               onSelected: (b) {}))
                           .toList(),
                     ),
-                    Text("Weakness"),
+                    Text(
+                      "Weakness",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: pokemon.weaknesses
@@ -59,21 +62,23 @@ class PokeDetail extends StatelessWidget {
                               onSelected: (b) {}))
                           .toList(),
                     ),
-                    Text("Next Evolution"),
+                    Text("Next Evolution",
+                        style: TextStyle(fontWeight: FontWeight.bold)),
                     Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: pokemon.nextEvolution
-                                .map((n) => FilterChip(
+                                ?.map((n) => FilterChip(
                                     backgroundColor: Colors.green[900],
-                                    label: Text(n.name,
-                                        style:
-                                            TextStyle(color: Colors.white70)),
+                                    label: Text(
+                                      n.name,
+                                      style: TextStyle(color: Colors.white),
+                                    ),
                                     onSelected: (b) {}))
                                 ?.toList() ??
-                            [Text('No more evolutions')]),
+                            [Text('No more Evolutions')]),
                   ],
-                )),
-          ),
+                ),
+              )),
           Align(
             alignment: Alignment.topCenter,
             child: Hero(
