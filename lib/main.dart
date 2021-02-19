@@ -46,8 +46,20 @@ class HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+          
+         
+       
         backgroundColor: Colors.black87,
         title: Text("Pokemon App ^v^"),
+         
+         actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {
+            },
+          )
+         ],
+      
       ),
       body: pokeUhuy == null
           ? Center(
@@ -95,7 +107,17 @@ class HomePageState extends State<HomePage> {
                       ))
                   .toList(),
             ),
-      drawer: Drawer(),
+      drawer: Drawer(
+      
+          child: Column(children: <Widget>[
+        Container(
+          width: double.infinity,
+          padding: EdgeInsets.all(379),
+          color: Colors.amber[300],
+           
+        )
+      ])
+      ),
       floatingActionButton: FloatingActionButton(
           onPressed: () {},
           backgroundColor: Colors.grey,

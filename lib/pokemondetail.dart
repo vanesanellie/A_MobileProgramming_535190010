@@ -20,12 +20,9 @@ class PokeDetail extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-
                     SizedBox(
-                    height: 70.0,
-                  ),
-
-
+                      height: 70.0,
+                    ),
                     Text(
                       pokemon.name,
                       style: TextStyle(
@@ -33,7 +30,9 @@ class PokeDetail extends StatelessWidget {
                     ),
                     Text("Height: ${pokemon.height}"),
                     Text("Weight: ${pokemon.weight}"),
-                    Text("Types", style: TextStyle(fontWeight: FontWeight.bold),
+                    Text(
+                      "Types",
+                      style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -62,19 +61,20 @@ class PokeDetail extends StatelessWidget {
                     ),
                     Text("Next Evolution"),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: pokemon.nextEvolution
-                          .map((n) => FilterChip(
-                              backgroundColor: Colors.green[900],
-                              label: Text(n.name,
-                                  style: TextStyle(color: Colors.white70)),
-                              onSelected: (b) {}))
-                          .toList(),
-                    ),
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: pokemon.nextEvolution
+                                .map((n) => FilterChip(
+                                    backgroundColor: Colors.green[900],
+                                    label: Text(n.name,
+                                        style:
+                                            TextStyle(color: Colors.white70)),
+                                    onSelected: (b) {}))
+                                ?.toList() ??
+                            [Text('No more evolutions')]),
                   ],
                 )),
           ),
-         Align(
+          Align(
             alignment: Alignment.topCenter,
             child: Hero(
                 tag: pokemon.img,
