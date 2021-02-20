@@ -47,6 +47,7 @@ class HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black87,
+<<<<<<< HEAD
         title: Text("Pokemon App"),
         actions: <Widget>[
           IconButton(
@@ -60,6 +61,9 @@ class HomePageState extends State<HomePage> {
             onPressed: () {},
           )
         ],
+=======
+        title: Text("Pokemon App ^v^"),
+>>>>>>> parent of 8e754e8 (xxx)
       ),
       body: pokeUhuy == null
           ? Center(
@@ -108,6 +112,7 @@ class HomePageState extends State<HomePage> {
                       ))
                   .toList(),
             ),
+<<<<<<< HEAD
       /* drawer: Drawer(
           child: Column(children: <Widget>[
         Container(
@@ -123,6 +128,9 @@ class HomePageState extends State<HomePage> {
           ),
         )
       ])),*/
+=======
+      drawer: Drawer(),
+>>>>>>> parent of 8e754e8 (xxx)
       floatingActionButton: FloatingActionButton(
           onPressed: () {},
           backgroundColor: Colors.grey,
