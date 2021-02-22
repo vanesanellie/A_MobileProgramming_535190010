@@ -1,6 +1,8 @@
-# flutter_application_1
+# pokemon App
 
 A new Flutter project.
+
+![pokemonlogo](https://user-images.githubusercontent.com/70554646/108755092-628f8e80-7579-11eb-8f0f-10c4e0333d86.png)
 
 ## Getting Started
 
